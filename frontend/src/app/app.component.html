@@ -1,0 +1,42 @@
+<div class="todo-app">
+  <div class="todo-header">
+    <h1>Todo App</h1>
+  </div>
+  
+  <div class="todo-input">
+    <input 
+      type="text" 
+      [(ngModel)]="newTaskContent" 
+      placeholder="Ajouter une nouvelle tâche..."
+      (keyup.enter)="addTask()"
+      class="todo-input__field"
+    >
+    <button (click)="addTask()" class="todo-input__button">
+      <span>Ajouter</span>
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="todo-loading">
+    <div class="todo-loading__spinner"></div>
+    <span>Chargement en cours...</span>
+  </div>
+
+  <ul class="todo-list">
+    <li *ngFor="let task of tasks" class="todo-item" [class.todo-item--completed]="task.completed">
+      <div class="todo-item__content">
+        <label class="todo-checkbox">
+          <input 
+            type="checkbox" 
+            [checked]="task.completed" 
+            (change)="toggleTask(task)"
+          >
+          <span class="todo-checkbox__checkmark"></span>
+        </label>
+        <span class="todo-item__text">{{ task.content }}</span>
+      </div>
+      <button (click)="deleteTask(task.id)" class="todo-item__delete">
+        <span>Supprimer</span>
+      </button>
+    </li>
+  </ul>
+</div>
