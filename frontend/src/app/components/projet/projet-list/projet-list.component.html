@@ -1,0 +1,14 @@
+<div *ngIf="isLoading">
+    <p>Chargement en cours...</p>
+  </div>
+  
+  <div *ngIf="!isLoading">
+    <ul>
+      <li *ngFor="let projet of projets">
+        <h3>{{ projet.name }}</h3>
+        <p>{{ projet.description }}</p>
+        <button (click)="deleteProjet(projet.id)">Supprimer</button>
+      </li>
+    </ul>
+  </div>
+  

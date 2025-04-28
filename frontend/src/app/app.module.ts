@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { InputTaskComponent } from './components/input-task/input-task.component';
 import { ListTaskComponent } from './components/list-task/list-task.component';
 import { ProjetFormComponent } from './components/projet/projet-form/projet-form.component';
+import { ProjetListComponent } from './components/projet/projet-list/projet-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputTaskComponent,
     ListTaskComponent,
-    ProjetFormComponent
+    ProjetFormComponent,
+    ProjetListComponent
   ],
   imports: [
     BrowserModule,
