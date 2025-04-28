@@ -1,7 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-task',
@@ -9,28 +8,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './list-task.component.html',
   styleUrl: './list-task.component.scss'
 })
-export class ListTaskComponent implements OnDestroy{
+export class ListTaskComponent {
+  @Input() refresh: boolean = false;
   tasks: Task[] = [];
   isLoading: boolean = false;
-  private taskRefreshSubscription!: Subscription;
 
   constructor(private taskService: TaskService) {}
 
-  ngOnInit(): void {
-    this.loadTasks();
-      // 👇 Écoute l'événement refreshTasks pour recharger la liste
-    this.taskRefreshSubscription = this.taskService.refreshTasks.subscribe(() => {
-      this.loadTasks();
-    });
+  ngOnChanges(): void {
+    this.loadTasks(); // A chaque changement du input, on recharge
   }
 
-  ngOnDestroy(): void {
-    // 🔥 Très important pour éviter les fuites mémoire
-    if (this.taskRefreshSubscription) {
-      this.taskRefreshSubscription.unsubscribe();
-    }
+  ngOnInit(): void {
+    this.loadTasks();
   }
-  
+
   loadTasks(): void {
     this.isLoading = true;
     this.taskService.getAllTasks().subscribe({
