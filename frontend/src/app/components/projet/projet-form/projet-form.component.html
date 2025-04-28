@@ -1,0 +1,15 @@
+<div class="projet-form">
+    <input 
+      type="text" 
+      [(ngModel)]="newProjetName" 
+      placeholder="Nom du projet" 
+      class="form-control"
+    >
+    <textarea 
+      [(ngModel)]="newProjetDescription" 
+      placeholder="Description du projet" 
+      class="form-control"
+    ></textarea>
+    <button (click)="createProjet()" class="btn btn-primary">Créer Projet</button>
+  </div>
+  
