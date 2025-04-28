@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-ajouter-task',
   standalone: false,
-  templateUrl: './ajouter-task.component.html',
-  styleUrl: './ajouter-task.component.scss'
+  templateUrl: './ajouter-task.component.html'
 })
 export class AjouterTaskComponent {
   newTaskContent = '';
