@@ -9,8 +9,6 @@ import { Task } from '../models/task.model';
 export class TaskService {
   private apiUrl = 'http://localhost:9000/api/tasks';
 
-  refreshTasks: Subject<void> = new Subject<void>(); // 👈 Événement de refresh
-  
   constructor(private http: HttpClient) { }
 
   getAllTasks(): Observable<Task[]> {
