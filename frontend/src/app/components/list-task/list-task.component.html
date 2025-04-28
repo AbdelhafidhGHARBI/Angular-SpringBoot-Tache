@@ -1,0 +1,24 @@
+<div *ngIf="isLoading" class="todo-loading">
+    <div class="todo-loading__spinner"></div>
+    <span>Chargement en cours...</span>
+  </div>
+  
+  <ul class="todo-list" *ngIf="!isLoading">
+    <li *ngFor="let task of tasks" class="todo-item" [class.todo-item--completed]="task.completed">
+      <div class="todo-item__content">
+        <label class="todo-checkbox">
+          <input 
+            type="checkbox" 
+            [checked]="task.completed" 
+            (change)="toggleTask(task)"
+          >
+          <span class="todo-checkbox__checkmark"></span>
+        </label>
+        <span class="todo-item__text">{{ task.content }}</span>
+      </div>
+      <button (click)="deleteTask(task.id)" class="todo-item__delete">
+        <span>Supprimer</span>
+      </button>
+    </li>
+  </ul>
+  

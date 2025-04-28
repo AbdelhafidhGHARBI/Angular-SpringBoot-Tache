@@ -1,0 +1,15 @@
+<div class="todo-input">
+    <input 
+      type="text" 
+      [(ngModel)]="newTaskContent" 
+      placeholder="Ajouter une nouvelle tâche..."
+      (keyup.enter)="addTask()"
+      class="todo-input__field"
+    >
+    <button (click)="addTask()" class="todo-input__button">
+      <span>Ajouter</span>
+    </button>
+  </div>
+
+  <app-list-task></app-list-task>
+  
