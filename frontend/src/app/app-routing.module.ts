@@ -7,18 +7,16 @@ import { ProjetListComponent } from './components/projet/projet-list/projet-list
 import { AjouterTaskComponent } from './components/ajouter-task/ajouter-task.component';
 
 const routes: Routes = [
-  { path: 'ajouter-tache', component: InputTaskComponent },
   { path: 'ajouter-tache', component: AjouterTaskComponent },
   { path: 'liste-taches', component: ListTaskComponent },
   { path: 'ajouter-projet', component: ProjetFormComponent },
   { path: 'liste-projets', component: ProjetListComponent },
-  { path: 'liste-taches', component: ListTaskComponent },
   { path: '', redirectTo: 'liste-projets', pathMatch: 'full' },
   { path: '', redirectTo: 'liste-taches', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
